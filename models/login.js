@@ -16,6 +16,7 @@ NEWSCHEMA('Login').make(function(schema) {
 			}
 		} else
 			error.push('error-user-credentials');
+		controller.cors(["*"],[],[],true);
 		callback(SUCCESS(true,{cookie:F.config.cookie+'='+key,userid:user.id||null}));
 	});
 });
