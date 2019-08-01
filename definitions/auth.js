@@ -3,9 +3,12 @@ const SESSION = {};
 F.onAuthorize = function(req, res, flags, next) {
 
 	var auth=req.headers['authorization']||null;
+	var token=req.query.token||null;
 	var type=auth?auth.split(' ')[0]:null;
 	if(type=='JWT'){
 		var cookie=auth.split(' ')[1];
+	}else if(token){
+		var cookie=token;
 	}else{
 		var cookie = req.cookie(F.config.cookie);
 	}
